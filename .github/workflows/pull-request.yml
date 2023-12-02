@@ -1,0 +1,24 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    env:
+      NODE_ENV: development
+      TZ: UTC
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: 1.x.x
+
+      - run: bun install
+      - run: bun tool-lint
+      - run: bun app-test
