@@ -1,0 +1,27 @@
+name: testing
+
+on:
+  pull_request:
+    branches:
+      - main
+
+env:
+  NODE_ENV: development
+  TZ: UTC
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
+
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.x.x
+
+      - run: bun install
+      - run: bun tool:lint
+      - run: bun app:test
