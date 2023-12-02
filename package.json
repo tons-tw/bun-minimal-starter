@@ -1,0 +1,30 @@
+{
+  "name": "@tons-tw/bun-minimal-starter",
+  "version": "0.1.0",
+  "license": "MIT",
+  "author": "CHANG, TZU-YEN <tom@tons.tw> (https://github.com/trylovetom)",
+  "type": "module",
+  "module": "src/index.ts",
+  "scripts": {
+    "app:build": "bun exec 'echo bypass'",
+    "app:dev": "bun --watch src/index.ts",
+    "app:start": "bun src/index.ts",
+    "app:test": "bun exec 'echo bypass'",
+    "tool:fmt": "prettier-package-json --write ./package.json && prettier '**/*' --write --ignore-unknown && eslint '**/*.{js,jsx,ts,tsx,vue}' --fix",
+    "tool:lint": "prettier '**/*' --check --ignore-unknown && eslint '**/*.{js,jsx,ts,tsx,vue}'"
+  },
+  "peerDependencies": {
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.30.0",
+    "@types/bun": "^1.2.17",
+    "eslint": "^9.30.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-prettier": "^5.5.1",
+    "prettier": "^3.6.2",
+    "prettier-package-json": "^2.8.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.35.0"
+  }
+}
